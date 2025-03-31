@@ -1,0 +1,10 @@
+Nguyen;Dinh Nhat;Huy;20
+Nguyen;Pham Minh;Quang;19
+Tran;Van;Nam;22
+Le;Thi;Hoa;21
+Pham;Gia;Bao;23
+Hoang;Anh;Tuan;24
+Do;Ngoc;Lan;20
+Bui;Thanh;Phuong;25
+Vu;Quang;Hieu;18
+Dang;Minh;Khang;22
