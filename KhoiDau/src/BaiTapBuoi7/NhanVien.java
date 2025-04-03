@@ -6,6 +6,15 @@ public class NhanVien extends Nguoi{
 	private String maNV;
 	private Double heSoLuong;
 	private Double luong;
+	
+	// Khoi tao
+	public NhanVien(String hoTen, Date ngaySinh, String queQuan, String khoa, String maNV, Double heSoLuong, Double luong) {
+		super(hoTen, ngaySinh, queQuan, khoa);
+		this.maNV = maNV;
+		this.heSoLuong = heSoLuong;
+		this.luong = luong;
+	}
+	
 	public String getMaNV() {
 		return maNV;
 	}
@@ -14,12 +23,6 @@ public class NhanVien extends Nguoi{
 	}
 	public Double getHeSoLuong() {
 		return heSoLuong;
-	}
-	public NhanVien(String hoTen, Date ngaySinh, String queQuan, String khoa, String maNV, Double heSoLuong, Double luong) {
-		super(hoTen, ngaySinh, queQuan, khoa);
-		this.maNV = maNV;
-		this.heSoLuong = heSoLuong;
-		this.luong = luong;
 	}
 	public void setHeSoLuong(Double heSoLuong) {
 		this.heSoLuong = heSoLuong;

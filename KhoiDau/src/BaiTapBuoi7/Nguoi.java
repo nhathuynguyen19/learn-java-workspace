@@ -7,6 +7,15 @@ public abstract class Nguoi {
     private Date ngaySinh;
     private String queQuan;
     private String khoa;
+    
+    // Khoi tao
+    public Nguoi(String hoTen, Date ngaySinh, String queQuan, String khoa) {
+        this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
+        this.queQuan = queQuan;
+        this.khoa = khoa;
+    }
+    
     public String getHoTen() {
         return hoTen;
     }
@@ -18,12 +27,6 @@ public abstract class Nguoi {
     }
     public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
-    }
-    public Nguoi(String hoTen, Date ngaySinh, String queQuan, String khoa) {
-        this.hoTen = hoTen;
-        this.ngaySinh = ngaySinh;
-        this.queQuan = queQuan;
-        this.khoa = khoa;
     }
     public String getQueQuan() {
         return queQuan;
