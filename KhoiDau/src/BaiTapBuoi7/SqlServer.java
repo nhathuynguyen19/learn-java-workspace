@@ -1,5 +1,6 @@
 package BaiTapBuoi7;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -10,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class SqlServer {
-	private Connection connection = null;
+	public static Connection connection;
 	public Connection getConnection() {
 		return connection;
 	}
@@ -18,32 +19,19 @@ public class SqlServer {
 		this.connection = connection;
 	}
 	public void connect(String serverName, String port, String databaseName, String userName, String password) {
-		String url = "";
-		if (userName == null || userName == "" || password == null || password == "") {
-			url = "jdbc:sqlserver://" + serverName + ":" + port + ";" 
-			           + "databaseName=" + databaseName + ";" 
-			           + "integratedSecurity=true;" 
-			           + "encrypt=false;";
-			
+		try {
+			String url = "jdbc:sqlserver://LAB401-30:1433;databaseName=NhanVienSinhVien;user=sa;password=16082005159487!Hh;trustServerCertificate=true;encrypt=true";
 			try {
-				connection = DriverManager.getConnection(url);
-				System.out.println("Ket noi thanh cong");
-			} catch (SQLException e) {
-				System.out.println("Ket noi that bai");
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		else {
-			url = 	"jdbc:sqlserver://" + serverName + ":" 
-					+ port + ";" + "databaseName=" + databaseName + ";encrypt=false";
-			
-			try {
-				connection = DriverManager.getConnection(url, userName, password);
-				System.out.println("Ket noi thanh cong");
-			} catch (SQLException e) {
-				System.out.println("Ket noi that bai");
-				e.printStackTrace();
-			}
+			System.out.println("Da xac dinh HQTCSDL");
+			connection = DriverManager.getConnection(url);
+			System.out.println("Ket noi thanh cong");
+		} catch (SQLException e) {
+			System.out.println("Ket noi that bai");
 		}
 	}
 	public void disconnect() {
@@ -52,7 +40,6 @@ public class SqlServer {
 			System.out.println("Da dong ket noi");
 		} catch (Exception e) {
 			System.out.println("Loi khi dong ket noi");
-			e.printStackTrace();
 		}
 	}
 	public void insertSinhVien(SinhVien sinhVien) {
@@ -71,7 +58,6 @@ public class SqlServer {
 			
 		} catch (Exception e) {
 			System.out.println("Loi khi chen du lieu Sinh vien");
-			e.printStackTrace();
 		}
 	}
 	public void insertNhanVien(NhanVien nhanVien) {
@@ -91,66 +77,102 @@ public class SqlServer {
 			
 		} catch (Exception e) {
 			System.out.println("Loi khi chen du lieu Nhan vien");
-			e.printStackTrace();
 		}
 	}
-	public void insertKhoa(String st) {
-		String  insertSQL = "insert into Khoa (MaKhoa) values (?)";
+	public void insertKhoa(String st, String tenKhoa) {
+		String  insertSQL = "insert into DonVi (MaKhoa, TenKhoa) values (?, ?)";
 		
 		try (PreparedStatement preparedstatement = connection.prepareStatement(insertSQL)) {
 			preparedstatement.setString(1, st);
+			preparedstatement.setString(2, tenKhoa);
 			
 			int rowsAffected = preparedstatement.executeUpdate();
 			System.out.println("Rows affected: " + rowsAffected);
 			
 		} catch (Exception e) {
-			System.out.println("Loi khi chen du lieu Khoa");
-			e.printStackTrace();
-		}
+			System.out.println("Loi khi chen du lieu Khoa");		}
+	}
+	public boolean isSinhVien(Object ob) {
+		if (ob.getClass().getName().contains("SinhVien")) return true;
+		return false;
+	}
+	public boolean isNhanVien(Object ob) {
+		if (ob.getClass().getName().contains("NhanVien")) return true;
+		return false;
+	}
+	public boolean isKhoa(Object ob) {
+		if (ob.getClass().getName().contains("String")) return true;
+		return false;
 	}
 	public void insert(Object ob) {
-		if (ob.getClass().getName().contains("SinhVien")) insertSinhVien((SinhVien) ob);
-		if (ob.getClass().getName().contains("NhanVien")) insertNhanVien((NhanVien) ob);
-		if (ob.getClass().getName().contains("String")) insertKhoa((String) ob);
+		if (isSinhVien(ob)) insertSinhVien((SinhVien) ob);
+		if (isNhanVien(ob)) insertNhanVien((NhanVien) ob);
+		if (isKhoa(ob)) insertKhoa((String) ob, "");
 	}
-	public SinhVien selectSinhVien(ResultSet rs) throws Exception {
-		String maSinhVien = rs.getString("MaSinhVien");
-		String hoTen = rs.getString("HoTen");
-		Date ngaySinh = rs.getDate("NgaySinh");
-		String queQuan = rs.getString("QueQuan");
-		Double diemTrungBinh = rs.getDouble("DiemTrungBinh");
-		String khoa = rs.getString("MaKhoa");
-		return new SinhVien(hoTen, ngaySinh, queQuan, khoa, maSinhVien, diemTrungBinh);
-	}
-	public NhanVien selectNhanVien(ResultSet rs) throws Exception {
-		String maNhanVien = rs.getString("MaNhanVien");
-		String hoTen = rs.getString("HoTen");
-		Date ngaySinh = rs.getDate("NgaySinh");
-		String queQuan = rs.getString("QueQuan");
-		String khoa = rs.getString("MaKhoa");
-		Double heSoLuong = rs.getDouble("HeSoLuong");
-		Double luong = rs.getDouble("Luong");
-		return new NhanVien(hoTen, ngaySinh, queQuan, khoa, maNhanVien, heSoLuong, luong);
-	}
-	public String selectKhoa(ResultSet rs) throws Exception {
-		return rs.getString("MaKhoa");
-	}
-	public void select(ArrayList<Object> ob) {
-		
+	public ArrayList<SinhVien> selectSinhVien() {
+		ArrayList<SinhVien> result = new ArrayList<SinhVien>();
 		try {
-			String query = "select * from " + tableName;
+			String query = "select * from SinhVien";
 			Statement stmt = connection.createStatement();
 			
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				if (tableName == "SinhVien") result.add(selectSinhVien(rs));
-				if (tableName == "NhanVien") result.add(selectNhanVien(rs));
-				if (tableName == "Khoa") result.add(selectKhoa(rs));
+				String maSinhVien = rs.getString("MaSinhVien");
+				String hoTen = rs.getString("HoTen");
+				Date ngaySinh = rs.getDate("NgaySinh");
+				String queQuan = rs.getString("QueQuan");
+				Double diemTrungBinh = rs.getDouble("DiemTrungBinh");
+				String khoa = rs.getString("MaKhoa");
+				SinhVien sv = new SinhVien(hoTen, ngaySinh, queQuan, khoa, maSinhVien, diemTrungBinh);
+				result.add(sv);
 			}
+			System.out.println("select sinh vien thanh cong");
 			return result;
 		} catch (Exception e) {
-			System.out.println("loi khi select");
-			e.printStackTrace();
+			System.out.println("loi khi select sinh vien");
+		}
+		return null;
+	}
+	public ArrayList<NhanVien> selectNhanVien() {
+		ArrayList<NhanVien> result = new ArrayList<NhanVien>();
+		try {
+			String query = "select * from NhanVien";
+			Statement stmt = connection.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				String maNhanVien = rs.getString("MaNhanVien");
+				String hoTen = rs.getString("HoTen");
+				Date ngaySinh = rs.getDate("NgaySinh");
+				String queQuan = rs.getString("QueQuan");
+				String khoa = rs.getString("MaKhoa");
+				Double heSoLuong = rs.getDouble("HeSoLuong");
+				Double luong = rs.getDouble("Luong");
+				NhanVien nv = new NhanVien(hoTen, ngaySinh, queQuan, khoa, maNhanVien, heSoLuong, luong);
+				result.add(nv);
+			}
+			System.out.println("select nhan vien thanh cong");
+			return result;
+		} catch (Exception e) {
+			System.out.println("loi khi select nhan vien");
+		}
+		return null;
+	}
+	public ArrayList<String> selectKhoa() {
+		ArrayList<String> result = new ArrayList<String>();
+		try {
+			String query = "select * from Khoa";
+			Statement stmt = connection.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				String maKhoa = rs.getString("MaKhoa");
+				result.add(maKhoa);
+			}
+			System.out.println("select khoa thanh cong");
+			return result;
+		} catch (Exception e) {
+			System.out.println("loi khi select khoa");
 		}
 		return null;
 	}

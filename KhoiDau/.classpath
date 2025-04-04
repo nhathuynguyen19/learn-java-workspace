@@ -5,7 +5,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/huy/Desktop/temp/sqljdbc_12.10/enu/jars/mssql-jdbc-12.10.0.jre11.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/23T1080025/mssql-jdbc-12.10.0.jre11.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

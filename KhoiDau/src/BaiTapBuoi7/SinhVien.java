@@ -25,4 +25,5 @@ public class SinhVien extends Nguoi{
     public void setDiemTB(Double diemTB) {
         this.diemTB = diemTB;
     } 
+    
 }
