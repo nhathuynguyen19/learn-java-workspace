@@ -3,9 +3,12 @@ package BaiTapBuoi7;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class test {
 	public static void main(String[] args) {
-		String password = System.getenv("PASSWORD");
+		Dotenv dotenv = Dotenv.load();
+		String password = dotenv.get("PASSWORD");
 		SqlServer sqlsv = new SqlServer(); // tao doi tuong sql server
 		QuanLyFile ql1 = new QuanLyFile();
 		QuanLySinhVien qlsv = new QuanLySinhVien();

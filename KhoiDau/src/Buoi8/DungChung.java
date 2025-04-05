@@ -22,6 +22,7 @@ public class DungChung {
 		System.out.println("Da ket noi");
 	}
 	public void HienThiNV() throws Exception {
+		System.out.println("-----Hien Thi Nhan Vien-----");
 		// b1 ket noi csdl
 		DungChung dc = new DungChung();
 		dc.ketNoi();
@@ -58,8 +59,10 @@ public class DungChung {
 		// b7 dong ket noi
 		rs.close();
 		dc.cn.close();
+		System.out.println("Da Ngat Ket Noi");
 	}
 	public void HienThiDonVi() throws Exception {
+		System.out.println("-----Hien Thi Don Vi-----");
 		// b1 ket noi csdl
 		DungChung dc = new DungChung();
 		dc.ketNoi();
@@ -87,8 +90,10 @@ public class DungChung {
 		// b7 dong ket noi
 		rs.close();
 		dc.cn.close();
+		System.out.println("Da Ngat Ket Noi");
 	}
 	public void HienThiNhanVienHSL45() throws Exception {
+		System.out.println("-----Hien Thi Nhan Vien Co He So Luong Lon Hon 4.5-----");
 		// b1 ket noi csdl
 		DungChung dc = new DungChung();
 		dc.ketNoi();
@@ -114,8 +119,10 @@ public class DungChung {
 		// b7 dong ket noi
 		rs.close();
 		dc.cn.close();
+		System.out.println("Da Ngat Ket Noi");
 	}
 	public void HienThiNVDonVi() throws Exception {
+		System.out.println("-----Hien Thi Nhan Vien Cua Don Vi-----");
 		// b1 ket noi csdl
 		DungChung dc = new DungChung();
 		dc.ketNoi();
@@ -149,40 +156,16 @@ public class DungChung {
 		// b7 dong ket noi
 		rs.close();
 		dc.cn.close();
-	}
-	public int xoaDonVi(String madv) throws Exception {
-		// b1 ket noi csdl
-		DungChung dc = new DungChung();
-		dc.ketNoi();
-		
-		// b2 thiet lap cau lenh
-		String query = 	"delete DonVi where MaKhoa = ?";
-		
-		//b3 tao cau lenh
-		PreparedStatement cmd = dc.cn.prepareStatement(query);
-		
-		// b4 truyen tham so neu co
-		cmd.setString(1, madv);
-		
-		// b5 thuc hien cau lenh sql
-		int rs = cmd.executeUpdate();
-		
-		// b6 dong ket noi
-		dc.cn.close();
-		return rs;
+		System.out.println("Da Ngat Ket Noi");
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
 			DungChung dc = new DungChung();
 			dc.HienThiNV();
-			System.out.println("-----");
 			dc.HienThiDonVi();
-			System.out.println("-----");
 			dc.HienThiNhanVienHSL45();
-			System.out.println("-----");
 			dc.HienThiNVDonVi();
-			System.out.println("-----");
 
 		} catch (Exception e) {
 			// TODO: handle exception
