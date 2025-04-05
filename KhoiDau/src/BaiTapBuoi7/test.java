@@ -15,7 +15,7 @@ public class test {
 		ArrayList<String> dsk1 = new ArrayList<String>();
 		
 		// ket noi co so du lieu
-		sqlsv.connect("LAB401-30", "1433", "NhanVienSinhVien", "sa", password);
+		sqlsv.connect("localhost", "1433", "NhanVienSinhVien", "SA", password);
 		
 		// lay doi tuong ket noi
 		Connection connection = sqlsv.getConnection();

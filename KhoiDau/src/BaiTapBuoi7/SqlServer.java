@@ -20,7 +20,7 @@ public class SqlServer {
 	}
 	public void connect(String serverName, String port, String databaseName, String userName, String password) {
 		try {
-			String url = "jdbc:sqlserver://LAB401-30:1433;databaseName=NhanVienSinhVien;user=sa;password=16082005159487!Hh;trustServerCertificate=true;encrypt=true";
+			String url = String.format("jdbc:sqlserver://%s:1433;databaseName=%s;user=%s;password=%s;trustServerCertificate=true", serverName, databaseName, userName, password);
 			try {
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			} catch (ClassNotFoundException e) {

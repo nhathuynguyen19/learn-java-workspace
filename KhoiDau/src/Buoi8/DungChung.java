@@ -8,10 +8,14 @@ import java.sql.ResultSet;
 
 public class DungChung {
 	public static Connection cn;
+	public static String serverName = "localhost";
+	public static String databaseName = "NhanVienSinhVien";
+	public static String userName = "SA";
+	public static String password = System.getenv("PASSWORD");
 	public void ketNoi() throws Exception {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		System.out.println("Da xac dinh HQTCSDL");
-		String url = "jdbc:sqlserver://LAB401-30:1433;databaseName=NhanVienSinhVien;user=sa;password=16082005159487!Hh;trustServerCertificate=true";
+		String url = String.format("jdbc:sqlserver://%s:1433;databaseName=%s;user=%s;password=%s;trustServerCertificate=true", serverName, databaseName, userName, password);
 		cn = DriverManager.getConnection(url);
 		System.out.println("Da ket noi");
 	}
