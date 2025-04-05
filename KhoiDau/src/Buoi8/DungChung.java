@@ -5,13 +5,15 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class DungChung {
 	public static Connection cn;
 	public static String serverName = "localhost";
 	public static String databaseName = "NhanVienSinhVien";
 	public static String userName = "SA";
-	public static String password = System.getenv("PASSWORD");
+	public static Dotenv dotenv = Dotenv.load();
+	public static String password = dotenv.get("PASSWORD");
 	public void ketNoi() throws Exception {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		System.out.println("Da xac dinh HQTCSDL");
