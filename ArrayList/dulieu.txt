@@ -1,0 +1,13 @@
+Sv45;Le Van RR;7.8
+sv46;Pham Thi SS;8.7
+sv47;Hoang Van TT;6.5
+sv48;Vo Thi UU;9.2
+sv49;Do Van VV;7.4
+sv50;Bui Thi WW;8.3
+nv1;Pham Dinh Quoc;DHKH;2.4
+nv2;Ngo Quoc Bao;DHKT;1.4
+nv3;Le Thi B;DHXD;3.0
+nv4;Tran Van C;DHCN;4.5
+nv5;Nguyen Thi D;DHSP;2.0
+nv6;Hoang Van E;DHTN;3.8
+nv7;Vo Thi F;DHBK;1.9
