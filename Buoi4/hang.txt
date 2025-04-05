@@ -1,6 +1,0 @@
-xang;1800
-nhot;90000
-keo;200
-banh da;5000
-xi mang;15000000
-thep;100000000

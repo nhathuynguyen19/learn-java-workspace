@@ -1,6 +1,0 @@
-sv001,Nguyen Van A,2000-01-01,Hanoi,8.5,K001
-sv002,Tran Thi B,2001-02-02,Haiphong,7.8,K002
-sv003,Le Van C,2002-03-03,Danang,9.0,K003
-nv001,Pham Van D,1980-04-04,Hue,3.5,15000000,K001
-nv002,Nguyen Thi E,1985-05-05,Saigon,4.0,20000000,K002
-nv003,Hoang Van F,1990-06-06,Nha Trang,2.8,12000000,K003
