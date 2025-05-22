@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Label;
 
 public class Fmqlnhanvien extends JFrame {
 
@@ -44,6 +45,7 @@ public class Fmqlnhanvien extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JTextField textField_6;
 	void NapBang(ArrayList<nhanvienbean> ds) {
 		DefaultTableModel mh = new DefaultTableModel();
 		mh.addColumn("manv");
@@ -106,7 +108,7 @@ public class Fmqlnhanvien extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 688, 468);
+		setBounds(100, 100, 688, 488);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -128,7 +130,7 @@ public class Fmqlnhanvien extends JFrame {
 		contentPane.add(list);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(177, 243, 485, 175);
+		tabbedPane.setBounds(177, 263, 485, 175);
 		contentPane.add(tabbedPane);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -170,25 +172,52 @@ public class Fmqlnhanvien extends JFrame {
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					nvbo.add(textField.getText(), textField_1.getText(), textField_2.getText(), textField_3.getText(), textField_4.getText(), textField_5.getText(), textField_6.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		btnNewButton.setBounds(177, 209, 89, 23);
+		btnNewButton.setBounds(177, 229, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(276, 209, 89, 23);
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (table.getSelectedColumnCount() != -1 && table.getSelectedRow() != -1) {
+					Object manv = table.getValueAt(table.getSelectedRow(), 0);
+					try {
+						nvbo.delete(manv.toString());
+						ds = nvbo.getnv();
+						NapBang(ds);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		btnDelete.setBounds(276, 229, 89, 23);
 		contentPane.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					NapBang(nvbo.getnv());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		btnUpdate.setBounds(375, 209, 89, 23);
+		btnUpdate.setBounds(375, 229, 89, 23);
 		contentPane.add(btnUpdate);
 		
 		JButton btnLoadFile = new JButton("Load file");
-		btnLoadFile.setBounds(474, 209, 89, 23);
+		btnLoadFile.setBounds(474, 229, 89, 23);
 		contentPane.add(btnLoadFile);
 		
 		JButton btnFind = new JButton("Find");
@@ -202,7 +231,40 @@ public class Fmqlnhanvien extends JFrame {
 				}
 			}
 		});
-		btnFind.setBounds(573, 209, 89, 23);
+		btnFind.setBounds(573, 229, 89, 23);
 		contentPane.add(btnFind);
+		
+		Label label = new Label("Mã nhân viên");
+		label.setBounds(173, 11, 80, 22);
+		contentPane.add(label);
+		
+		Label label_1 = new Label("Họ tên");
+		label_1.setBounds(173, 40, 80, 22);
+		contentPane.add(label_1);
+		
+		Label label_2 = new Label("Ngày sinh");
+		label_2.setBounds(173, 69, 80, 22);
+		contentPane.add(label_2);
+		
+		Label label_3 = new Label("Giới tính");
+		label_3.setBounds(173, 100, 80, 22);
+		contentPane.add(label_3);
+		
+		Label label_4 = new Label("Hệ số lương");
+		label_4.setBounds(173, 131, 80, 22);
+		contentPane.add(label_4);
+		
+		Label label_5 = new Label("Ghi chú");
+		label_5.setBounds(173, 162, 80, 22);
+		contentPane.add(label_5);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(259, 192, 276, 20);
+		contentPane.add(textField_6);
+		
+		Label label_6 = new Label("Mã đơn vị");
+		label_6.setBounds(173, 190, 80, 22);
+		contentPane.add(label_6);
 	}
 }

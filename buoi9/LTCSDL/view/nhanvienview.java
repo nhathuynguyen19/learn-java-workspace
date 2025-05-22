@@ -15,16 +15,16 @@ public class nhanvienview {
 				System.out.println(nv.toString());
 			}
 			
-			Scanner nhap = new Scanner(System.in);
-			System.out.println("Nhap ma dv");
-			String mdv = nhap.nextLine();
-			for (nhanvienbean nv : nvbo.TimMdv(mdv))
-				System.out.println(nv.toString());
+//			Scanner nhap = new Scanner(System.in);
+//			System.out.println("Nhap ma dv");
+//			String mdv = nhap.nextLine();
+//			for (nhanvienbean nv : nvbo.TimMdv(mdv))
+//				System.out.println(nv.toString());
 			
-			System.out.println("Nhap ho ten");
-			String ht = nhap.nextLine();
-			for(nhanvienbean nv : nvbo.Tim(ht))
-				System.out.println(nv.toString());
+//			System.out.println("Nhap ho ten");
+//			String ht = nhap.nextLine();
+//			for(nhanvienbean nv : nvbo.Tim(ht))
+//				System.out.println(nv.toString());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

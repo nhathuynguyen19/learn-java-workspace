@@ -1,5 +1,4 @@
 package dao;
-
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,5 +42,43 @@ public class nhanviendao {
 		dc.cn.close();
 		System.out.println("Da Ngat Ket Noi");
 		return ds;
+	}
+	
+	public String add(String manv, String hoten, String ngaysinh, String gioitinh, String hsl, String ghichu, String madv) throws Exception {
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+		
+		String query = "insert into NhanVien values(?, ?, ?, ?, ?, ?, ?);";
+				
+		PreparedStatement cmd = kn.cn.prepareStatement(query);
+		
+		cmd.setString(1, manv);
+		cmd.setString(2, hoten);
+		cmd.setString(3, ngaysinh);
+		cmd.setString(4, gioitinh);
+		cmd.setString(5, hsl);
+		cmd.setString(6, ghichu);
+		cmd.setString(7, madv);
+		
+		cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return "Da chen 1 nhan vien";
+	}
+	
+	public String delete(String manv) throws Exception {
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+		
+		String query = "delete from NhanVien where manv = ?;";
+				
+		PreparedStatement cmd = kn.cn.prepareStatement(query);
+		
+		cmd.setString(1, manv);
+		
+		cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return "Da xoa 1 nhan vien";
 	}
 }

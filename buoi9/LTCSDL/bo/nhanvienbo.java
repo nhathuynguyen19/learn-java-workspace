@@ -1,5 +1,6 @@
 package bo;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import bean.nhanvienbean;
@@ -31,5 +32,13 @@ public class nhanvienbo {
 			}
 		}
 		return tam;
+	}
+	
+	public void add(String manv, String hoten, String ngaysinh, String gioitinh, String hsl, String ghichu, String madv) throws Exception {
+		System.out.println(nvdao.add(manv, hoten, ngaysinh, gioitinh, hsl, ghichu, madv));
+	}
+	
+	public void delete(String manv) throws Exception {
+		System.out.println(nvdao.delete(manv));
 	}
 }

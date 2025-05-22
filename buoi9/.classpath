@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="LTCSDL"/>
 	<classpathentry kind="lib" path="C:/WORK/learn-java-workspace-master/libs/mssql-jdbc-12.10.0.jre11.jar"/>
+	<classpathentry kind="lib" path="C:/WORK/learn-java-workspace/libs/mssql-jdbc-12.10.0.jre11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
