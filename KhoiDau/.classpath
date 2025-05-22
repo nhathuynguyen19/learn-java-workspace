@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-24">
+>>>>>>> 19dce88 (g)
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/home/huy/Desktop/learn-java-workspace/libs/mssql-jdbc-12.10.0.jre11.jar"/>
 	<classpathentry kind="lib" path="/home/huy/Desktop/learn-java-workspace/libs/dotenv-java-2.2.4.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/WORK/learn-java-workspace-master/libs/dotenv-java-2.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/WORK/learn-java-workspace-master/libs/mssql-jdbc-12.10.0.jre11.jar"/>
+>>>>>>> 19dce88 (g)
 	<classpathentry kind="output" path="bin"/>
 </classpath>
