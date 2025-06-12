@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import BO.SinhVienBo;
 import Bean.SinhVien;
-import DAO.SinhVienDAO;
 import QuanLyFile.QuanLyFile;
 
 public class test {

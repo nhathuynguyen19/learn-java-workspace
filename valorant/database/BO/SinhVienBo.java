@@ -1,11 +1,8 @@
 package BO;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Bean.SinhVien;
-import DAO.Connector;
 import DAO.SinhVienDAO;
 import QuanLyFile.QuanLyFile;
 
