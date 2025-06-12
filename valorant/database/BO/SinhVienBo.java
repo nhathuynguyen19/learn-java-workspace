@@ -29,4 +29,16 @@ public class SinhVienBo {
 		
 		return rs;
 	}
+	
+	public ArrayList<SinhVien> danhSachSinhVien2002and7(ArrayList<SinhVien> ds, Integer namSinh) throws Exception {
+		ArrayList<SinhVien> rs = new ArrayList<SinhVien>();
+		
+		for (SinhVien sv : ds) {
+			if (sv.getNamSinh().equals(namSinh) && sv.getDtb() > 7.0) {
+				rs.add(sv);
+			}
+		}
+		
+		return rs;
+	}
 }
