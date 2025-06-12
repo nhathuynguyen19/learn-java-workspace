@@ -16,4 +16,17 @@ public class SinhVienBo {
 		}
 		return rs;
 	}
+	
+	public ArrayList<SinhVien> findSinhVien(ArrayList<SinhVien> ds, String msv) {
+		ArrayList<SinhVien> rs = new ArrayList<SinhVien>();
+		
+		for (SinhVien sv : ds) {
+			if (sv.getMsv().equalsIgnoreCase(msv)) {
+				rs.add(sv);
+				return rs;
+			}
+		}
+		
+		return rs;
+	}
 }

@@ -31,6 +31,17 @@ public class test {
 				System.out.println("Khong co sinh vien sinh tai " + noiSinh);
 			}
 			
+			// cau 3
+			System.out.println("Nhap ma sinh vien can tim");
+			String msv = input.nextLine().strip();
+			t = svbo.findSinhVien(ds, msv);
+			if (t.size() > 0) {
+				qlf.outputDanhSachSinhVienTuDanhSach(t);
+			} else {
+				System.out.println("Khong ton tai sinh vien co ma " + msv);
+			}
+			
+			input.close();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
