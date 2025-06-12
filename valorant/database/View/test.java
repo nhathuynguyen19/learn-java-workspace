@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import BO.SinhVienBo;
 import Bean.SinhVien;
+import DAO.SinhVienDAO;
 import QuanLyFile.QuanLyFile;
 
 public class test {
@@ -51,6 +52,12 @@ public class test {
 				System.out.println("Khong ton tai sinh vien co nam sinh = " + namSinh + "va diem trung binh > 7.0");
 			}
 			
+			// cau 5
+			for (SinhVien sv : ds) {
+				if (!svbo.isExist(sv.getMsv())) {
+					svbo.insert(sv);
+				}
+			}
 			
 			input.close();
 			

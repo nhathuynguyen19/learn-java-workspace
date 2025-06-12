@@ -1,12 +1,17 @@
 package BO;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Bean.SinhVien;
+import DAO.Connector;
+import DAO.SinhVienDAO;
 import QuanLyFile.QuanLyFile;
 
 public class SinhVienBo {
 	public QuanLyFile qlf = new QuanLyFile();
+	SinhVienDAO svdao = new SinhVienDAO();
 	public ArrayList<SinhVien> danhSachSinhVienNoiSinh(String noiSinh, ArrayList<SinhVien> ds) throws Exception {
 		ArrayList<SinhVien> rs = new ArrayList<SinhVien>();
 		for (SinhVien sv : ds) {
@@ -40,5 +45,13 @@ public class SinhVienBo {
 		}
 		
 		return rs;
+	}
+	
+	public boolean isExist(String msv) throws Exception {
+		return svdao.isExist(msv);
+	}
+	
+	public void insert(SinhVien sv) throws Exception {
+		svdao.insert(sv);
 	}
 }
