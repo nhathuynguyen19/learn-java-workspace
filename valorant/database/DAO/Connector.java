@@ -10,7 +10,7 @@ public class Connector {
 		String driverURL = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 		Class.forName(driverURL);
 		System.out.println("Da xac dinh he quan tri co so du lieu");
-		String databaseURL = "jdbc:sqlserver://DESKTOP-RUGUKIB:1433;databaseName=ontap1javacoban;user=sa;password=123;encrypt=false;trustCertificate=true";
+		String databaseURL = "jdbc:sqlserver://DESKTOP-RUGUKIB:1433;databaseName=QLSV_23T1080025;user=sa;password=123;encrypt=false;trustCertificate=true";
 		cn = DriverManager.getConnection(databaseURL);
 		System.out.println("Da ket noi co so du lieu");
 	}

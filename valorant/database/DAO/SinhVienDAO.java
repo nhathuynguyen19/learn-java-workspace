@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import Bean.SinhVien;
 
@@ -13,7 +14,7 @@ public class SinhVienDAO {
 		dbc.connect();
 		
 		// tao chuoi lenh
-		String query = "select * from NhanVien where MaNhanVien = ?";
+		String query = "select * from SinhVien where MaSV = ?";
 		
 		// chuan bi cau lenh
 		PreparedStatement cmd = Connector.cn.prepareStatement(query);
@@ -58,5 +59,42 @@ public class SinhVienDAO {
 		// ngat ket noi
 		if (cmd != null) cmd.close();
 		dbc.disconnect();
+	}
+	
+	public ArrayList<SinhVien> selectTop3Dtb() throws Exception {
+		ArrayList<SinhVien> rs = new ArrayList<SinhVien>();
+		
+		// ket noi co so du lieu
+		dbc.connect();
+		
+		// tao chuoi lenh
+		String query = "select top 3 * from SinhVien order by DiemTB desc";
+		
+		// chuan bi cau lenh
+		PreparedStatement cmd = Connector.cn.prepareStatement(query);
+		
+		// them tham so neu co
+		
+		// thuc hien cau lenh
+		ResultSet rsset = cmd.executeQuery();
+		
+		while (rsset.next()) {
+			String msv = rsset.getString("MaSV");
+			String ht = rsset.getString("HoTen");;
+			String noiSinh = rsset.getString("QueQuan");;
+			Integer namSinh = rsset.getInt("NamSinh");
+			boolean gt = rsset.getBoolean("GioiTinh");
+			Float dtb = rsset.getFloat("DiemTB");
+			
+			SinhVien sv = new SinhVien(msv, ht, noiSinh, namSinh, gt, dtb);
+			rs.add(sv);
+		}
+		
+		// dong ket noi
+		if (cmd != null) cmd.close();
+		if (rsset != null) rsset.close();
+		dbc.disconnect();
+		
+		return rs;
 	}
 }

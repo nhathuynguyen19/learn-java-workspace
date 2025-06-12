@@ -54,4 +54,8 @@ public class SinhVienBo {
 	public void insert(SinhVien sv) throws Exception {
 		svdao.insert(sv);
 	}
+	
+	public ArrayList<SinhVien> selectTop3Dtb() throws Exception {
+		return svdao.selectTop3Dtb();
+	}
 }

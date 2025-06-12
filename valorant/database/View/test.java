@@ -59,6 +59,13 @@ public class test {
 				}
 			}
 			
+			//cau 6
+			System.out.println("Danh sach 3 sinh vien co diem tb cao nhat");
+			t = svbo.selectTop3Dtb();
+			if (t.size() > 0) {
+				qlf.outputDanhSachSinhVienTuDanhSach(t);
+			}
+			
 			input.close();
 			
 		} catch (Exception e) {
