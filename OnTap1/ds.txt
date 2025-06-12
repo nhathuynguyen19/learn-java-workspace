@@ -1,0 +1,8 @@
+GV003,Pham Van H,Hop dong ngan han,1.9,450000
+NV002,Tran Thi C,Hop dong ngan han,1.8
+GV004,Tran Thi I,Hop dong dai han,2.8,700000
+NV003,Le Van D,Hop dong dai han,2.0
+GV002,Nguyen Thi G,Hop dong dai han,2.5,600000
+NV004,Hoang Thi E,Hop dong ngan han,1.2
+NV005,Do Van F,Hop dong dai han,2.1
+GV005,Le Van K,Hop dong ngan han,1.7,400000

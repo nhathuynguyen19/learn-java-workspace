@@ -1,0 +1,3 @@
+SV001;Nguyen Van A;Hue;2002;nam;8.5
+SV002;Tran Thi B;Da Nang;2003;nu;7.0
+SV003;Le Van C;Hue;2001;nam;6.8
