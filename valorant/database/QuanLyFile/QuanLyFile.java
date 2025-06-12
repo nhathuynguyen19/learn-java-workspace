@@ -38,7 +38,7 @@ public class QuanLyFile {
 	}
 	
 	public void outputDanhSachSinhVienTuDanhSach(ArrayList<SinhVien> ds) throws Exception {
-	    System.out.printf("%-6s | %-15s | %-10s | %-8s | %-9s | %-6s\n", "MaSV", "HoTen", "NoiSinh", "NamSinh", "GioiTinh", "DiemTB");
+	    System.out.printf("| %-6s | %-15s | %-10s | %-8s | %-9s | %-6s |\n", "MaSV", "HoTen", "NoiSinh", "NamSinh", "GioiTinh", "DiemTB");
 
 	    for (SinhVien sv : ds) {
 	    	String gioiTinh = "";
@@ -47,7 +47,7 @@ public class QuanLyFile {
 			} else if (!sv.isGt()) {
 				gioiTinh = "nu";
 			}
-	        System.out.printf("%-6s | %-15s | %-10s | %-8d | %-9s | %-6.1f\n",
+	        System.out.printf("| %-6s | %-15s | %-10s | %-8d | %-9s | %-6.1f |\n",
 	                sv.getMsv(), sv.getHt(), sv.getNoiSinh(), sv.getNamSinh(), gioiTinh, sv.getDtb());
 	    }
 	}
